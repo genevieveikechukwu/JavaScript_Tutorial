@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Slider</title>
+    </head>
+    <style>
+        * {
+            margin: 0;
+        }
+
+        nav {
+            position: relative;
+            overflow: hidden;
+            background-color: aqua;
+        }
+
+        ul {
+            display: inline-flex;
+            position: relative;
+            left: 3em;
+            padding: 20px;
+
+        }
+
+        li {
+            list-style: none;
+            margin-left: 20px;
+        }
+        li:hover{
+            cursor: pointer;
+        }
+
+        .menu,
+        .close {
+            display: none;
+        }
+
+        @media only screen and (max-width:600px) {
+            * {
+                margin: 0%;
+                padding: 0%;
+            }
+
+            ul {
+                display: none;
+                list-style: none;
+                padding: 20px;
+
+
+            }
+
+            .menu,
+            .close {
+                display: block;
+                font-size: 2em;
+                font-weight: 300;
+            }
+
+            .close {
+                display: none;
+            }
+
+            .show {
+                display: block;
+
+            }
+
+            .list {
+                display: block;
+                color: red;
+                position: absolute;
+                top: 10%;
+                margin-left: 85%;
+            }
+
+            nav {
+                background-color: transparent;
+                position: relative;
+            }
+
+            .go {
+                background-color: aqua;
+                margin-right: 100%;
+            }
+        }
+    </style>
+
+    <body>
+        <main>
+            <div>
+                <nav id="me">
+                    <ul id="list">
+                        <li>Home</li>
+                        <li>About</li>
+                        <li>Contact</li>
+                        <li>Blog</li>
+                        <li>Programs</li>
+                    </ul>
+                    <div class="menu" id="menu" onclick="mma()">
+                        &#9776;
+                    </div>
+                    <div class="close" id="close" onclick="closeNav()">
+                        &#10005;
+                    </div>
+                </nav>
+            </div>
+        </main>
+
+
+        <script>
+            function mma(){
+        let ul = document.getElementById("list");
+        let nav = document.querySelector("#me");
+        let menu = document.querySelector("#menu");
+        let close = document.querySelector("#close");
+       menu.classList.add("close");
+        ul.classList.add("show");
+        nav.classList.add("go");
+        let id = null;
+        const elem = document.getElementById("me");
+        let pos = 100;
+        clearInterval(id);
+        id = setInterval(frame, 20);
+        
+     function frame() {
+          if (pos == 0) {
+            clearInterval(id);
+            close.classList.add("list");
+          } else {
+            pos -= 2;
+            console.log(id)
+            elem.style.marginRight = pos + '%';
+          }
+        }
+
+            }
+
+
+
+            function closeNav(){
+        document.getElementById("close").classList.remove("list");
+        document.getElementById("menu").classList.remove("close");
+        document.getElementById("list").classList.remove("show");
+        document.getElementById("me").classList.remove("go");
+
+            }
+        </script>
+    </body>
+
+</html>
