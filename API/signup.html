@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #color{
+            transition-duration:3s;
+            transition-property:background-color;
+        }
+    </style>   v 
+</head>
+<body>
+   <for m action="" method="post" id="form1">
+    <label for="firstName">Firstname:</label><br>
+    <input type="text" name="firstName" id="firstName" value=""><br>
+    <label for="lastName">Lastname:</label><br>
+    <input type="text" name="lastName" id="lastName" value=""><br>
+    <label for="email">Email:</label><br>
+    <input type="email" name="email" id="email" value=""><br>
+    <label for="pwd">Password:</label><br>
+    <input type="password" name="pwd" id="pwd" value=""><br>
+
+
+    <input type="submit" value="Signup" formenctype="multipart/form-data">
+   </form>
+
+    <script>
+      async function upload(formData){
+          try {
+    const response = await fetch("https://64b06b9dc60b8f941af5b1e6.mockapi.io/api/v1/users", {
+      method: "POST",
+      headers: {'content-type':'application/json'},
+      body: JSON.stringify(formData),
+    });
+    const result = await response.json();
+    if (result){
+     console.log("Success:", result);
+     localStorage.setItem("data",JSON.stringify(result))
+    }
+    
+  } catch (error) {
+    console.error("Error:", error);
+  }
+      }
+      const signupForm = document.getElementById("form1");
+      
+    //   console.log(signupForm)
+      signupForm.addEventListener('submit', (e)=>{
+        e.preventDefault();
+        let data = {}
+        let firstname = document.getElementById("firstName").value
+        let lastname = document.getElementById("lastName").value
+        let email = document.getElementById("email").value
+        let password = document.getElementById("pwd").value
+         data.firstName = firstname
+         data.lastName = lastname
+         data.email = email
+         data.password = password
+         console.log(data)
+        upload(data);
+      })
+    </script>
+</body>
+</html>

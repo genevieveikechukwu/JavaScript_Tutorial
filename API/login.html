@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #color{
+            transition-duration:3s;
+            transition-property:background-color;
+        }
+    </style>
+</head>
+<body>
+   <form action="" method="post" id="form2">
+    <label for="email">Email:</label><br>
+    <input type="email" name="email" id="email"><br>
+    <label for="pwd">Password:</label><br>
+    <input type="password" name="pwd" id="pwd"><br>
+
+    
+    <input type="submit" value="login" formenctype="multipart/form-data">
+   </form>
+
+    <script>
+
+        window.addEventListener("load", ()=>{
+            const token = localStorage.getItem("token")
+            if (token){
+                location.href = "./dashboard.html"
+            }
+        })
+      const signupForm = document.getElementById("form2");
+      
+    //   console.log(signupForm)
+      signupForm.addEventListener('submit', (e)=>{
+        e.preventDefault();
+     
+        let email = document.getElementById("email").value
+        let password = document.getElementById("pwd").value
+
+        
+      const data = localStorage.getItem("data");
+     let dataObj = JSON.parse(data)
+       if(dataObj["email"] == email && dataObj["password"]==password){
+          const token = crypto.randomUUID()
+          localStorage.setItem("token", token)
+
+        console.log("login successful")
+        location.href = "./dashboard.html"
+        // console.log(token)
+       }else{
+        console.log("Invalid login credentials")
+       }
+   
+      })
+    </script>
+</body>
+</html>
