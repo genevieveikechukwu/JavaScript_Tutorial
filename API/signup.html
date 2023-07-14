@@ -9,10 +9,10 @@
             transition-duration:3s;
             transition-property:background-color;
         }
-    </style>   v 
+    </style> 
 </head>
 <body>
-   <for m action="" method="post" id="form1">
+   <form action="" method="post" id="form1">
     <label for="firstName">Firstname:</label><br>
     <input type="text" name="firstName" id="firstName" value=""><br>
     <label for="lastName">Lastname:</label><br>
@@ -37,6 +37,7 @@
     const result = await response.json();
     if (result){
      console.log("Success:", result);
+     alert("User successfully created!!")
      localStorage.setItem("data",JSON.stringify(result))
     }
     
