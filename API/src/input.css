@@ -1,0 +1,22 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.input{
+    @apply border-2 border-red-100 outline-none p-2 rounded-md ;
+}
+
+.btn{
+    @apply
+     mt-10 border-2 outline-none hover:cursor-pointer border-emerald-600 bg-emerald-600 text-white w-32 p-2 rounded-md text-center ml-48 hover:transition-colors;
+}
+
+.label{
+    @apply mt-3 text-lg text-gray-600;
+}
+.form{
+    @apply grid grid-flow-row ml-80 mt-8 p-16 border-2 w-1/2;
+}
+.input:focus{
+    @apply border-b-2 border-emerald-500 border-l-0 rounded-none border-r-0 border-t-0;
+}
