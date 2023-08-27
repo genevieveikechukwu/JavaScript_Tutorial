@@ -14,13 +14,13 @@
 <body>
    <form action="" method="post" id="form1">
     <label for="firstName">Firstname:</label><br>
-    <input type="text" name="firstName" id="firstName" value=""><br>
+    <input type="text" name="firstName" id="firstName"><br>
     <label for="lastName">Lastname:</label><br>
-    <input type="text" name="lastName" id="lastName" value=""><br>
+    <input type="text" name="lastName" id="lastName"><br>
     <label for="email">Email:</label><br>
-    <input type="email" name="email" id="email" value=""><br>
+    <input type="email" name="email" id="email"><br>
     <label for="pwd">Password:</label><br>
-    <input type="password" name="pwd" id="pwd" value=""><br>
+    <input type="password" name="password" id="pwd"><br>
 
 
     <input type="submit" value="Signup" formenctype="multipart/form-data">
@@ -46,19 +46,22 @@
   }
       }
       const signupForm = document.getElementById("form1");
+
       
     //   console.log(signupForm)
       signupForm.addEventListener('submit', (e)=>{
         e.preventDefault();
-        let data = {}
-        let firstname = document.getElementById("firstName").value
-        let lastname = document.getElementById("lastName").value
-        let email = document.getElementById("email").value
-        let password = document.getElementById("pwd").value
-         data.firstName = firstname
-         data.lastName = lastname
-         data.email = email
-         data.password = password
+        let form = new FormData(e.target)
+        // let data = {}
+        // let firstname = document.getElementById("firstName").value
+        // let lastname = document.getElementById("lastName").value
+        // let email = document.getElementById("email").value
+        // let password = document.getElementById("pwd").value
+        //  data.firstName = firstname
+        //  data.lastName = lastname
+        //  data.email = email
+        //  data.password = password
+        const data = Object.fromEntries(form.entries())
          console.log(data)
         upload(data);
       })
